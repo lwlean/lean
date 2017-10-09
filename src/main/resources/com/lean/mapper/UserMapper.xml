@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.lean.mapper.UserMapper">
+    <resultMap id="BaseResultMap" type="com.lean.domain.User">
+        <id column="id" property="id" jdbcType="BIGINT" />
+        <result column="name" property="name" jdbcType="VARCHAR"/>
+        <result column="password" property="password" jdbcType="VARCHAR"/>
+        <result column="age" property="age" jdbcType="BIGINT"/>
+        <result column="introduction" property="email" jdbcType="VARCHAR"/>
+    </resultMap>
+
+
+    <sql id="Base_Column_List">
+        id, name, password, age, introduction
+    </sql>
+
+
+    <insert id="addUser" useGeneratedKeys="true" keyProperty="id" parameterType="com.lean.domain.User">
+        insert into users
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="name!=null">
+                name,
+            </if>
+            <if test="password!=null">
+                password,
+            </if>
+            <if test="age!=null">
+                age,
+            </if>
+            <if test="introduction!=null">
+                introduction,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="name!=null">
+                #{name},
+            </if>
+            <if test="password!=null">
+                #{password},
+            </if>
+            <if test="age!=null">
+                #{age},
+            </if>
+            <if test="introduction!=null">
+                #{introduction},
+            </if>
+        </trim>
+    </insert>
+
+    <select id="queryUser" parameterType="com.lean.domain.User" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from users
+        where 1=1
+        <if test="name != null">
+            and name = #{name}
+        </if>
+        <if test="password != null">
+            and password = #{password}
+        </if>
+        <if test="age!=null">
+            and age = #{age}
+        </if>
+        <if test="introduction != null">
+            and introduction = #{introduction}
+        </if>
+        limit 1
+    </select>
+
+    <delete id="deleteUser" parameterType="com.lean.domain.User">
+        delete from users
+        where
+        <if test="name!=null">
+            name = #{name}
+        </if>
+    </delete>
+
+    <update id="updateUser" parameterType="com.lean.domain.User">
+        update users
+        <set>
+            <if test="name!=null">
+                name = #{name},
+            </if>
+            <if test="age!=null">
+                age = #{age},
+            </if>
+            <if test="password!=null">
+                password = #{password},
+            </if>
+            <if test="introduction!=null">
+                introduction = #{introduction},
+            </if>
+        </set>
+        where name = #{name}
+    </update>
+
+</mapper>

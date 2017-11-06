@@ -7,4 +7,3 @@ CREATE TABLE "public"."users" (
   "age" int4,
   "introduction" varchar(255)
 )
-

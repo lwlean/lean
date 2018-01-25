@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
 
+import java.util.Properties;
+
 import static org.quartz.JobBuilder.newJob;
 
 @Component
@@ -25,11 +27,16 @@ public class QuartzConfig {
     @Bean
     public Scheduler startScheduler(JobDetailBean jobDetailBean) throws SchedulerException {
 
-        Scheduler scheduler = new StdSchedulerFactory().getScheduler();
+        final StdSchedulerFactory stdSchedulerFactory = new StdSchedulerFactory();
+
+        Properties properties = new Properties();
+        properties.get("./quartz/quartz.properties");
+
+        Scheduler scheduler = stdSchedulerFactory.getScheduler();
 
         final String jobClass = jobDetailBean.getJobClass();
 
-//        scheduler.start();
+        scheduler.start();
 
         Job job = getJobClass(jobClass);
 

@@ -41,4 +41,18 @@ public class UserController {
         return new ResultObject(newUser);
     }
 
+    @PostMapping("userLogin")
+    public ResultObject userLoin(@RequestBody User user) {
+        logger.info("user login by user name:{} and password:{}:",user.getName(), user.getPassword());
+        if (StringUtils.isBlank(user.getName()) || StringUtils.isBlank(user.getPassword())) {
+            return new ResultObject(ErrorEnum.PARAMETERS_ERROR);
+        }
+
+        final User queryUser = userService.queryUser(user);
+        if (queryUser!=null) {
+            return new ResultObject();
+        }
+        return new ResultObject(ErrorEnum.RESULT_NOT_EXIST_ERROR);
+    }
+
 }

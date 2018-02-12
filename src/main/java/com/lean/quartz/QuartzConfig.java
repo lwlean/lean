@@ -36,7 +36,7 @@ public class QuartzConfig {
 
         final String jobClass = jobDetailBean.getJobClass();
 
-        scheduler.start();
+//        scheduler.start();
 
         Job job = getJobClass(jobClass);
 

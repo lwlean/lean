@@ -10,7 +10,8 @@ public enum ErrorEnum {
     PARAMETERS_ERROR(1001, "参数传入错误"),
     FILED_TYPE_MATCH_ERROR(1002,"参数类型匹配错误"),
     RESTTEMPLATE_ERROR(1003,"调用接口错误"),
-    RESULT_EXIST_ERROR(1004,"結果已存在");
+    RESULT_EXIST_ERROR(1004,"結果已存在"),
+    RESULT_NOT_EXIST_ERROR(1005,"结果不存在");
 
     private Integer code;
 

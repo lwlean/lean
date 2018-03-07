@@ -1,6 +1,7 @@
 package com.lean.controller;
 
 import com.lean.domain.Expenses;
+import com.lean.exception.ErrorEnum;
 import com.lean.util.ResultObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -21,6 +22,7 @@ public class ExpensesController {
     @PostMapping("addExpenses")
     public ResultObject addExpenses(@RequestBody Expenses expenses) {
         logger.info("add exprenses of amount:{} on date:{}",expenses.getAmount(), expenses.getTime());
+        if (expenses.getAmount() == null) return new ResultObject(ErrorEnum.PARAMETERS_ERROR);
         
         return new ResultObject();
     }

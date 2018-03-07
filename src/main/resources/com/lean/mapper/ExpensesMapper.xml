@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.lean.mapper.ExpensesMapper">
+    <resultMap id="BaseResultMap" type="com.lean.domain.Expenses">
+        <id column="id" property="id" jdbcType="BIGINT" />
+        <result column="amount" property="amount" jdbcType="NUMERIC"/>
+        <result column="type" property="type" jdbcType="VARCHAR"/>
+        <result column="time" property="time" jdbcType="TIMESTAMP"/>
+        <result column="current_time" property="currentTime" jdbcType="TIMESTAMP"/>
+        <result column="content" property="content" jdbcType="VARCHAR"/>
+    </resultMap>
+
+
+    <sql id="Base_Column_List">
+        id, amount, type, time, current_time, content
+    </sql>
+
+
+    <insert id="addExpenses" useGeneratedKeys="true" keyProperty="id" parameterType="com.lean.domain.Expenses">
+        insert into expenses
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="amount!=null">
+                amount,
+            </if>
+            <if test="type!=null">
+                type,
+            </if>
+            <if test="time!=null">
+                time,
+            </if>
+            <if test="currentTime!=null">
+                current_time,
+            </if>
+            <if test="content!=null">
+                content,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="amount!=null">
+                #{amount},
+            </if>
+            <if test="type!=null">
+                #{type},
+            </if>
+            <if test="time!=null">
+                #{time},
+            </if>
+            <if test="currentTime!=null">
+                #{currentTime},
+            </if>
+            <if test="content!=null">
+                #{content}
+            </if>
+        </trim>
+    </insert>
+
+    <!--<select id="queryExpenses" parameterType="com.lean.domain.Expenses" resultMap="BaseResultMap">-->
+        <!--select-->
+        <!--<include refid="Base_Column_List"/>-->
+        <!--from expenses-->
+        <!--where 1=1-->
+        <!--<if test="amount != null">-->
+            <!--and name = #{name}-->
+        <!--</if>-->
+        <!--<if test="password != null">-->
+            <!--and password = #{password}-->
+        <!--</if>-->
+        <!--<if test="age!=null">-->
+            <!--and age = #{age}-->
+        <!--</if>-->
+        <!--<if test="introduction != null">-->
+            <!--and introduction = #{introduction}-->
+        <!--</if>-->
+        <!--limit 1-->
+    <!--</select>-->
+
+    <delete id="deleteExpenses" parameterType="com.lean.domain.Expenses">
+        delete from users
+        where
+        <if test="id!=null">
+            id = #{id}
+        </if>
+    </delete>
+
+    <!--<update id="updateUser" parameterType="com.lean.domain.User">-->
+        <!--update users-->
+        <!--<set>-->
+            <!--<if test="name!=null">-->
+                <!--name = #{name},-->
+            <!--</if>-->
+            <!--<if test="age!=null">-->
+                <!--age = #{age},-->
+            <!--</if>-->
+            <!--<if test="password!=null">-->
+                <!--password = #{password},-->
+            <!--</if>-->
+            <!--<if test="introduction!=null">-->
+                <!--introduction = #{introduction},-->
+            <!--</if>-->
+        <!--</set>-->
+        <!--where name = #{name}-->
+    <!--</update>-->
+
+</mapper>

@@ -1,8 +1,8 @@
-package com.lean.mapper;
+package com.lean.service;
 
 import com.lean.domain.Expenses;
 
-public interface ExpensesMapper {
+public interface ExpensesService {
 
     void addExpenses(Expenses expenses);
 

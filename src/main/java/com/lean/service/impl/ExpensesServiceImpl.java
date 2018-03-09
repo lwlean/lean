@@ -6,6 +6,8 @@ import com.lean.service.ExpensesService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class ExpensesServiceImpl implements ExpensesService{
 
@@ -18,9 +20,10 @@ public class ExpensesServiceImpl implements ExpensesService{
     }
 
     @Override
-    public Expenses queryExpenses(Expenses expenses) {
+    public List<Expenses> queryExpenses(Expenses expenses) {
         return expensesMapper.queryExpenses(expenses);
     }
+
 
     @Override
     public int updateExpenses(Expenses expenses) {

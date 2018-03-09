@@ -54,25 +54,24 @@
         </trim>
     </insert>
 
-    <!--<select id="queryExpenses" parameterType="com.lean.domain.Expenses" resultMap="BaseResultMap">-->
-        <!--select-->
-        <!--<include refid="Base_Column_List"/>-->
-        <!--from expenses-->
-        <!--where 1=1-->
-        <!--<if test="amount != null">-->
-            <!--and name = #{name}-->
-        <!--</if>-->
-        <!--<if test="password != null">-->
-            <!--and password = #{password}-->
-        <!--</if>-->
-        <!--<if test="age!=null">-->
-            <!--and age = #{age}-->
-        <!--</if>-->
-        <!--<if test="introduction != null">-->
-            <!--and introduction = #{introduction}-->
-        <!--</if>-->
-        <!--limit 1-->
-    <!--</select>-->
+    <select id="queryExpenses" parameterType="com.lean.domain.Expenses" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from expenses
+        where 1=1
+        <if test="amount != null">
+            and amount = #{amount}
+        </if>
+        <if test="type != null">
+            and type = #{type}
+        </if>
+        <if test="time!=null">
+            and time = #{time}
+        </if>
+        <if test="content != null">
+            and content = #{content}
+        </if>
+    </select>
 
     <delete id="deleteExpenses" parameterType="com.lean.domain.Expenses">
         delete from users

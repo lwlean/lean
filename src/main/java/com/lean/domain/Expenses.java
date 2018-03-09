@@ -15,13 +15,16 @@ public class Expenses {
     private String type;
 
     // 消费时间
-    private Timestamp time;
+    private Date time;
 
     // 记录时间
-    private Timestamp currentTime;
+    private Date currentTime;
 
     // 消费内容
     private String content;
+
+    // 消费总金额
+    private BigDecimal totalAmount;
 
     public BigDecimal getAmount() {
         return amount;
@@ -39,19 +42,19 @@ public class Expenses {
         this.type = type;
     }
 
-    public Timestamp getTime() {
+    public Date getTime() {
         return time;
     }
 
-    public void setTime(Timestamp time) {
+    public void setTime(Date time) {
         this.time = time;
     }
 
-    public Timestamp getCurrentTime() {
+    public Date getCurrentTime() {
         return currentTime;
     }
 
-    public void setCurrentTime(Timestamp currentTime) {
+    public void setCurrentTime(Date currentTime) {
         this.currentTime = currentTime;
     }
 
@@ -61,5 +64,13 @@ public class Expenses {
 
     public void setContent(String content) {
         this.content = content;
+    }
+
+    public BigDecimal getTotalAmount() {
+        return totalAmount;
+    }
+
+    public void setTotalAmount(BigDecimal totalAmount) {
+        this.totalAmount = totalAmount;
     }
 }

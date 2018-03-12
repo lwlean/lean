@@ -1,10 +1,8 @@
 package com.lean.domain;
 
 
-
 import java.math.BigDecimal;
 import java.sql.Timestamp;
-import java.util.Date;
 
 public class Expenses {
 
@@ -15,10 +13,10 @@ public class Expenses {
     private String type;
 
     // 消费时间
-    private Date time;
+    private Timestamp time;
 
     // 记录时间
-    private Date currentTime;
+    private Timestamp currentTime;
 
     // 消费内容
     private String content;
@@ -42,19 +40,19 @@ public class Expenses {
         this.type = type;
     }
 
-    public Date getTime() {
+    public Timestamp getTime() {
         return time;
     }
 
-    public void setTime(Date time) {
+    public void setTime(Timestamp time) {
         this.time = time;
     }
 
-    public Date getCurrentTime() {
+    public Timestamp getCurrentTime() {
         return currentTime;
     }
 
-    public void setCurrentTime(Date currentTime) {
+    public void setCurrentTime(Timestamp currentTime) {
         this.currentTime = currentTime;
     }
 

@@ -6,6 +6,9 @@ import java.sql.Timestamp;
 
 public class Expenses {
 
+    // id
+    private Long id;
+
     // 消费金额
     private BigDecimal amount;
 
@@ -23,6 +26,14 @@ public class Expenses {
 
     // 消费总金额
     private BigDecimal totalAmount;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public BigDecimal getAmount() {
         return amount;

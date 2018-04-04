@@ -34,15 +34,15 @@ public class QiMoorController {
             batch1.setTime("20180322");
             batch1.setCount("3");
             batch1.setUserCode("zijian_cs");
-            batch1.setBatch("00260010001");
+            batch1.setBatch("00260030001");
             batch1.setExtracted("0");
             batch1.setType("1");
 
             Batch batch2 = new Batch();
             batch2.setTime("20180402");
-            batch2.setCount("7");
+            batch2.setCount("3");
             batch2.setUserCode("zijian_cs");
-            batch2.setBatch("00260020002");
+            batch2.setBatch("00260030002");
             batch2.setExtracted("0");
             batch2.setType("1");
 
@@ -50,7 +50,7 @@ public class QiMoorController {
             batch3.setTime("20180402");
             batch3.setCount("4");
             batch3.setUserCode("zijian_cs");
-            batch3.setBatch("00260020001");
+            batch3.setBatch("00260030003");
             batch3.setExtracted("0");
             batch3.setType("1");
 
@@ -76,40 +76,179 @@ public class QiMoorController {
             List<Sample> list = new ArrayList<>();
 
             int createNum = 0;
-            String batch = "00260020001";
-            String virtualnum = "00260020002000";
-
+            String batch = "00260030001";
+            String virtualnum = "00260030001000";
+//
+//            if (!StringUtils.isNotBlank(batchNum)) {
+//
+//            } else if (StringUtils.equals("00260030001", batchNum)) {
+//                createNum = 3;
+//                batch = batchNum;
+//                virtualnum = "00260020001000";
+//            } else if (StringUtils.equals("00260010001", batchNum)) {
+//                createNum = 3;
+//                batch = "00260010001";
+//                virtualnum = "00260010001000";
+//            } else if (StringUtils.equals("00260020002", batchNum)) {
+//                createNum = 7;
+//                batch = "00260020002";
+//                virtualnum = "00260020002000";
+//            }
+//
+//            for (int i = 0; i < createNum; i++) {
+//                final Sample sample = new Sample();
+//                sample.setExplanation("紧密联系人");
+//                sample.setLostusername("张三"+i);
+//                sample.setUsermode(2);
+//                sample.setLostusernum("100000031345xxx");
+//                sample.setTime("2018-04-02 10:19:32.377734");
+//                sample.setLosttime("");
+//                sample.setBatch(batch);
+//                sample.setLostuseridcard("440111111XXX");
+//                sample.setVirtualid(5);
+//                sample.setVirtualnum(virtualnum + i);
+//                list.add(sample);
+//            }
+//        }
             if (!StringUtils.isNotBlank(batchNum)) {
 
-            } else if (StringUtils.equals("00260020001", batchNum)) {
-                createNum = 4;
-                batch = "00260020001";
-                virtualnum = "00260020001000";
-            } else if (StringUtils.equals("00260010001", batchNum)) {
+            } else if (StringUtils.equals("00260030001", batchNum)) {
                 createNum = 3;
-                batch = "00260010001";
-                virtualnum = "00260010001000";
-            } else if (StringUtils.equals("00260020002", batchNum)) {
-                createNum = 7;
-                batch = "00260020002";
-                virtualnum = "00260020002000";
-            }
+                batch = batchNum;
+//                virtualnum = "00260030001000";
+                final Sample sample1 = new Sample();
+                sample1.setExplanation("紧密联系人");
+                sample1.setLostusername("张三");
+                sample1.setUsermode(2);
+                sample1.setLostusernum("10003001001xxx");
+                sample1.setTime("2018-04-02 10:19:32.377734");
+                sample1.setLosttime("");
+                sample1.setBatch(batch);
+                sample1.setLostuseridcard("440111111XXX");
+                sample1.setVirtualnum("002600300010101");
+                list.add(sample1);
 
-            for (int i = 0; i < createNum; i++) {
-                final Sample sample = new Sample();
-                sample.setExplanation("紧密联系人");
-                sample.setLostusername("张三"+i);
-                sample.setUsermode(2);
-                sample.setLostusernum("100000031345xxx");
-                sample.setTime("2018-04-02 10:19:32.377734");
-                sample.setLosttime("");
-                sample.setBatch(batch);
-                sample.setLostuseridcard("440111111XXX");
-                sample.setVirtualid(5);
-                sample.setVirtualnum(virtualnum + i);
-                list.add(sample);
-            }
+                final Sample sample2 = new Sample();
+                sample2.setExplanation("紧密联系人");
+                sample2.setLostusername("张三");
+                sample2.setUsermode(2);
+                sample2.setLostusernum("100030002001xxx");
+                sample2.setTime("2018-04-02 10:19:32.377734");
+                sample2.setLosttime("");
+                sample2.setBatch(batch);
+                sample2.setLostuseridcard("440111111XXX");
+                sample2.setVirtualid(5);
+                sample2.setVirtualnum("002600300010201");
+                list.add(sample2);
 
+                final Sample sample3 = new Sample();
+                sample3.setExplanation("紧密联系人");
+                sample3.setLostusername("张三");
+                sample3.setUsermode(2);
+                sample3.setLostusernum("100030002001xxx");
+                sample3.setTime("2018-04-02 10:19:32.377734");
+                sample3.setLosttime("");
+                sample3.setBatch(batch);
+                sample3.setLostuseridcard("440111111XXX");
+                sample3.setVirtualid(5);
+                sample3.setVirtualnum("002600300010202");
+                list.add(sample2);
+
+            } else if (StringUtils.equals("00260030002", batchNum)) {
+                createNum = 3;
+                batch = batchNum;
+                final Sample sample1 = new Sample();
+                sample1.setExplanation("紧密联系人");
+                sample1.setLostusername("张三");
+                sample1.setUsermode(2);
+                sample1.setLostusernum("10003002001xxx");
+                sample1.setTime("2018-04-02 10:19:32.377734");
+                sample1.setLosttime("");
+                sample1.setBatch(batch);
+                sample1.setLostuseridcard("440111111XXX");
+                sample1.setVirtualnum("002600300020101");
+                list.add(sample1);
+
+                final Sample sample2 = new Sample();
+                sample2.setExplanation("紧密联系人");
+                sample2.setLostusername("张三");
+                sample2.setUsermode(2);
+                sample2.setLostusernum("100030002002xxx");
+                sample2.setTime("2018-04-02 10:19:32.377734");
+                sample2.setLosttime("");
+                sample2.setBatch(batch);
+                sample2.setLostuseridcard("440111111XXX");
+                sample2.setVirtualid(5);
+                sample2.setVirtualnum("002600300020201");
+                list.add(sample2);
+
+                final Sample sample3 = new Sample();
+                sample3.setExplanation("紧密联系人");
+                sample3.setLostusername("张三");
+                sample3.setUsermode(2);
+                sample3.setLostusernum("100030002003xxx");
+                sample3.setTime("2018-04-02 10:19:32.377734");
+                sample3.setLosttime("");
+                sample3.setBatch(batch);
+                sample3.setLostuseridcard("440111111XXX");
+                sample3.setVirtualid(5);
+                sample3.setVirtualnum("002600300020203");
+                list.add(sample3);
+            } else if (StringUtils.equals("00260030003", batchNum)) {
+                createNum = 4;
+                batch = batchNum;
+                final Sample sample1 = new Sample();
+                sample1.setExplanation("紧密联系人");
+                sample1.setLostusername("张三");
+                sample1.setUsermode(2);
+                sample1.setLostusernum("10003003001xxx");
+                sample1.setTime("2018-04-02 10:19:32.377734");
+                sample1.setLosttime("");
+                sample1.setBatch(batch);
+                sample1.setLostuseridcard("440111111XXX");
+                sample1.setVirtualnum("002600300030101");
+                list.add(sample1);
+
+                final Sample sample2 = new Sample();
+                sample2.setExplanation("紧密联系人");
+                sample2.setLostusername("张三");
+                sample2.setUsermode(2);
+                sample2.setLostusernum("10003003001xxx");
+                sample2.setTime("2018-04-02 10:19:32.377734");
+                sample2.setLosttime("");
+                sample2.setBatch(batch);
+                sample2.setLostuseridcard("440111111XXX");
+                sample2.setVirtualid(5);
+                sample2.setVirtualnum("002600300030101");
+                list.add(sample2);
+
+                final Sample sample3 = new Sample();
+                sample3.setExplanation("紧密联系人");
+                sample3.setLostusername("张三");
+                sample3.setUsermode(2);
+                sample3.setLostusernum("10003003002xxx");
+                sample3.setTime("2018-04-02 10:19:32.377734");
+                sample3.setLosttime("");
+                sample3.setBatch(batch);
+                sample3.setLostuseridcard("440111111XXX");
+                sample3.setVirtualid(5);
+                sample3.setVirtualnum("002600300030201");
+                list.add(sample3);
+
+                final Sample sample4 = new Sample();
+                sample4.setExplanation("紧密联系人");
+                sample4.setLostusername("张三");
+                sample4.setUsermode(2);
+                sample4.setLostusernum("100030002003xxx");
+                sample4.setTime("2018-04-02 10:19:32.377734");
+                sample4.setLosttime("");
+                sample4.setBatch(batch);
+                sample4.setLostuseridcard("440111111XXX");
+                sample4.setVirtualid(5);
+                sample4.setVirtualnum("002600300030201");
+                list.add(sample4);
+
+            }
             data.put("result", list);
             data.put("count", createNum);
             data.put("description", "SUCCESS");

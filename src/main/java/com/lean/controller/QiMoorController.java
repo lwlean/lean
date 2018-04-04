@@ -132,7 +132,7 @@ public class QiMoorController {
                 sample2.setExplanation("紧密联系人");
                 sample2.setLostusername("张三");
                 sample2.setUsermode(2);
-                sample2.setLostusernum("100030002001xxx");
+                sample2.setLostusernum("100030001002xxx");
                 sample2.setTime("2018-04-02 10:19:32.377734");
                 sample2.setLosttime("");
                 sample2.setBatch(batch);
@@ -145,7 +145,7 @@ public class QiMoorController {
                 sample3.setExplanation("紧密联系人");
                 sample3.setLostusername("张三");
                 sample3.setUsermode(2);
-                sample3.setLostusernum("100030002001xxx");
+                sample3.setLostusernum("100030001002xxx");
                 sample3.setTime("2018-04-02 10:19:32.377734");
                 sample3.setLosttime("");
                 sample3.setBatch(batch);

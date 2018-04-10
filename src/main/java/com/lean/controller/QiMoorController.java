@@ -60,9 +60,9 @@ public class QiMoorController {
 
             final DBObject batchNumByBatch = userMongoService.getBatchNumByBatch(batchNum);
             final Object extracted = batchNumByBatch.get("extracted");
+            list = userMongoService.getVirtualNum(batchNum);
             if(StringUtils.equals("1", type)) {
                 if("0".equals(extracted)) {
-                    list = userMongoService.getVirtualNum(batchNum);
                     userMongoService.updateBatchNum(batchNum, String.valueOf(list.size()));
                 }
             }

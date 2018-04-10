@@ -31,7 +31,7 @@ public class QiMoorController {
     private UserMongoService userMongoService;
 
     @RequestMapping(value = "/command", method = RequestMethod.GET)
-    public Object getBatchNumber(@RequestParam(name = "Command") String command, @RequestParam(name = "Action") String action, @RequestParam(name = "batchNum") String batchNum) {
+    public Object getBatchNumber(@RequestParam(name = "Command") String command, @RequestParam(name = "Action") String action, @RequestParam(name = "batchNum") String batchNum, @RequestParam(name = "type", required = false) String type) {
         log.info("command:{},Action:{}",command,action);
 
         Map<String, Object> resultMap = new HashMap();
@@ -60,9 +60,11 @@ public class QiMoorController {
 
             final DBObject batchNumByBatch = userMongoService.getBatchNumByBatch(batchNum);
             final Object extracted = batchNumByBatch.get("extracted");
-            if("0".equals(extracted)) {
-                list = userMongoService.getVirtualNum(batchNum);
-                userMongoService.updateBatchNum(batchNum, String.valueOf(list.size()));
+            if(StringUtils.equals("1", type)) {
+                if("0".equals(extracted)) {
+                    list = userMongoService.getVirtualNum(batchNum);
+                    userMongoService.updateBatchNum(batchNum, String.valueOf(list.size()));
+                }
             }
 
             data.put("result", list);
@@ -112,9 +114,27 @@ public class QiMoorController {
         batch3.setExtracted("0");
         batch3.setType("1");
 
+        Batch batch4 = new Batch();
+        batch4.setTime("20180402");
+        batch4.setCount("2");
+        batch4.setUserCode("zijian_cs");
+        batch4.setBatch("00260030004");
+        batch4.setExtracted("0");
+        batch4.setType("1");
+
+        Batch batch5 = new Batch();
+        batch5.setTime("20180402");
+        batch5.setCount("3");
+        batch5.setUserCode("zijian_cs");
+        batch5.setBatch("00030010001");
+        batch5.setExtracted("0");
+        batch5.setType("0");
+
         userMongoService.addBatchNum(batch1);
         userMongoService.addBatchNum(batch2);
         userMongoService.addBatchNum(batch3);
+        userMongoService.addBatchNum(batch4);
+        userMongoService.addBatchNum(batch5);
         Map<String, Object> result = new HashMap<>();
         result.put("code", 200);
         result.put("message", "SUCCESS");
@@ -256,6 +276,58 @@ public class QiMoorController {
         list.add(sample10);
 
 
+        final Sample sample11 = new Sample();
+        sample11.setExplanation("紧密联系人");
+        sample11.setLostusername("张三");
+        sample11.setUsermode(2);
+        sample11.setLostusernum("10003004001xxx");
+        sample11.setTime("2018-04-02 10:19:32.377734");
+        sample11.setLosttime("");
+        sample11.setBatch("00260030003");
+        sample11.setLostuseridcard("440111111XXX");
+        sample11.setVirtualid(5);
+        sample11.setVirtualnum("002600300040101");
+        list.add(sample11);
+
+        final Sample sample12 = new Sample();
+        sample12.setExplanation("紧密联系人");
+        sample12.setLostusername("张三");
+        sample12.setUsermode(2);
+        sample12.setLostusernum("10003004002xxx");
+        sample12.setTime("2018-04-02 10:19:32.377734");
+        sample10.setLosttime("");
+        sample12.setBatch("00260030003");
+        sample12.setLostuseridcard("440111111XXX");
+        sample12.setVirtualid(5);
+        sample12.setVirtualnum("002600300040101");
+        list.add(sample12);
+
+        final Sample sample20 = new Sample();
+        sample20.setVirtualnum("00030010001000");
+        sample20.setBrands("宝马");
+        sample20.setCity("020");
+        sample20.setBatch("00030010001");
+        sample20.setTime("2016-04-23");
+        sample20.setName("赵大");
+        list.add(sample20);
+
+        final Sample sample21 = new Sample();
+        sample21.setVirtualnum("00030010001001");
+        sample21.setBrands("宝马");
+        sample21.setCity("020");
+        sample21.setBatch("00030010001");
+        sample21.setTime("2016-04-23");
+        sample21.setName("赵二");
+        list.add(sample21);
+
+        final Sample sample22 = new Sample();
+        sample22.setVirtualnum("00030010001001");
+        sample22.setBrands("宝马");
+        sample22.setCity("020");
+        sample22.setBatch("00030010001");
+        sample22.setTime("2016-04-23");
+        sample22.setName("赵三");
+        list.add(sample22);
 
         list.forEach(sample -> {
             userMongoService.addVirtualNum(sample);

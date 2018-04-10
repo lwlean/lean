@@ -50,6 +50,7 @@ public class UserMongoServiceImpl implements UserMongoService{
         virtualNumObject.put("lostuseridcard",sample.getLostuseridcard());
         virtualNumObject.put("virtualid", sample.getVirtualid());
         virtualNumObject.put("virtualnum", sample.getVirtualnum());
+        virtualNumObject.put("name", sample.getName());
 
         final WriteResult smapleResult = mongoTemplate.getCollection("sample").insert(virtualNumObject);
     }

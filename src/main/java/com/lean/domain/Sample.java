@@ -26,6 +26,10 @@ public class Sample {
 
     private String virtualnum;
 
+    private String brands;
+
+    private String name;
+
     public String getExplanation() {
         return explanation;
     }
@@ -122,7 +126,23 @@ public class Sample {
         this.virtualnum = virtualnum;
     }
 
-//    "explanation": "紧密联系人",
+    public String getBrands() {
+        return brands;
+    }
+
+    public void setBrands(String brands) {
+        this.brands = brands;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    //    "explanation": "紧密联系人",
 //    "lostusername": "张三",
 //    "usermode": 2,
 //    "lostusernum": "100000031345xxx",

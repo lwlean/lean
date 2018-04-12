@@ -77,7 +77,16 @@ public class QiMoorController {
         return resultMap;
     }
 
-
+    @RequestMapping(value = "updateBatchToZero", method = RequestMethod.GET)
+    public Object updateBatchToZero() {
+        log.info("update batch extracted to 0");
+        final int i = userMongoService.updateBatchToZero();
+        Map<String, Object> result = new HashMap<>();
+        result.put("code", 200);
+        result.put("message", "SUCCESS");
+        result.put("updateNum", i);
+        return result;
+    }
 
     // 测试用
     @RequestMapping(value = "/testMongo", method = RequestMethod.GET)
@@ -197,6 +206,18 @@ public class QiMoorController {
         sample4.setLostuseridcard("440111111XXX");
         sample4.setVirtualnum("002600300020101");
         list.add(sample4);
+
+        final Sample sample4_1 = new Sample();
+        sample4_1.setExplanation("紧密联系人");
+        sample4_1.setLostusername("张三");
+        sample4_1.setUsermode(2);
+        sample4_1.setLostusernum("10003002001xxx");
+        sample4_1.setTime("2018-04-02 10:19:32.377734");
+        sample4_1.setLosttime("");
+        sample4_1.setBatch("00260030002");
+        sample4_1.setLostuseridcard("440111111XXX");
+        sample4_1.setVirtualnum("002600300020102");
+        list.add(sample4_1);
 
         final Sample sample5 = new Sample();
         sample5.setExplanation("紧密联系人");

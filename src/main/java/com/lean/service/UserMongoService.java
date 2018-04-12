@@ -24,4 +24,6 @@ public interface UserMongoService {
 
     DBObject getUserByName(String name);
 
+    int updateBatchToZero();
+
 }

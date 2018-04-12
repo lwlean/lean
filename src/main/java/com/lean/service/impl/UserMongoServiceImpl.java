@@ -51,6 +51,7 @@ public class UserMongoServiceImpl implements UserMongoService{
         virtualNumObject.put("virtualid", sample.getVirtualid());
         virtualNumObject.put("virtualnum", sample.getVirtualnum());
         virtualNumObject.put("name", sample.getName());
+        virtualNumObject.put("brands", sample.getBrands());
 
         final WriteResult smapleResult = mongoTemplate.getCollection("sample").insert(virtualNumObject);
     }
@@ -102,5 +103,16 @@ public class UserMongoServiceImpl implements UserMongoService{
         final DBCollection userCollection = mongoTemplate.getCollection("user");
         final DBObject user = mongoTemplate.getCollection("user").findOne(dbObject);
         return user;
+    }
+
+    @Override
+    public int updateBatchToZero() {
+        DBObject query = new BasicDBObject();
+        query.put("userCode", "zijian_cs");
+        DBObject update = new BasicDBObject();
+        update.put("$set", new BasicDBObject("extracted", "0"));
+        final WriteResult batch = mongoTemplate.getCollection("batch").update(query, update);
+        int n = batch.getN();
+        return n;
     }
 }

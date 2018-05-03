@@ -111,7 +111,7 @@ public class UserMongoServiceImpl implements UserMongoService{
         query.put("userCode", "zijian_cs");
         DBObject update = new BasicDBObject();
         update.put("$set", new BasicDBObject("extracted", "0"));
-        final WriteResult batch = mongoTemplate.getCollection("batch").update(query, update);
+        final WriteResult batch = mongoTemplate.getCollection("batch").updateMulti(query, update);
         int n = batch.getN();
         return n;
     }

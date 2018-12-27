@@ -10,6 +10,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 /**
  * Created by llw on 2017/10/10.
  */
@@ -53,6 +55,13 @@ public class UserController {
             return new ResultObject();
         }
         return new ResultObject(ErrorEnum.RESULT_NOT_EXIST_ERROR);
+    }
+
+    @PostMapping("getAllUser")
+    public ResultObject getAllUsers(){
+        logger.info("query all users");
+        List<User> users = userService.getAllUser();
+        return new ResultObject(users);
     }
 
 }

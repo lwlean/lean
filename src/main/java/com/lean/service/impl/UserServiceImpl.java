@@ -7,6 +7,8 @@ import com.lean.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * Created by llw on 2017/9/29.
  */
@@ -34,5 +36,10 @@ public class UserServiceImpl implements UserService {
     @Override
     public int deleteUser(User user) {
         return userMapper.deleteUser(user);
+    }
+
+    @Override
+    public List<User> queryUser() {
+        return userMapper.getAllUser();
     }
 }

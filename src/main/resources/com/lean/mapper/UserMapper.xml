@@ -67,6 +67,12 @@
         limit 1
     </select>
 
+    <select id="getAllUser" parameterType="com.lean.domain.User" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from users
+    </select>
+
     <delete id="deleteUser" parameterType="com.lean.domain.User">
         delete from users
         where
